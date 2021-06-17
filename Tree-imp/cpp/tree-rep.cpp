@@ -55,6 +55,32 @@ bool searchData( Node* root, int data){
     }
 }
 
+int findMin(Node* root){
+
+    if(root == NULL){
+        cout<<"Tree is empty \n";
+        return -1;
+    }
+    else if(root->left == NULL){
+        return root->data;
+    }
+    
+    return findMin(root->left);
+}
+
+int findMax(Node* root){
+
+    if(root == NULL){
+        cout<<"Tree is empty \n";
+        return -1;
+    }
+    else if(root->right == NULL){
+        return root->data;
+    }
+
+    return findMax(root->right);
+}
+
 int main(){
      
      Node* root = NULL;
@@ -74,6 +100,8 @@ int main(){
      cin>>val;
      bool result = searchData(root,val);
      cout<<"Result:"<<result<<"\n";
+     cout<<"Smallest Number in tree:-"<<findMin(root)<<"\n";
+     cout<<"Largest Number in tree:- "<<findMax(root)<<"\n";
 
     return 0;
 }
