@@ -39,7 +39,21 @@ Node* Insert(Node* root , int data){
        return root;
 }
 
+bool searchData( Node* root, int data){
 
+    if(root == NULL){
+        return false;
+    }
+    else if(root->data == data){
+        return true;
+    }
+    else if(data <= root->data){
+        return searchData(root->left, data);
+    }
+    else{
+        return searchData(root->right, data);
+    }
+}
 
 int main(){
      
@@ -53,7 +67,14 @@ int main(){
      root = Insert(root, 17);
      root = Insert(root, 25);
      
-     cout<<root->data;
+     cout<<"This is root!"<<root->data<<"\n";
+
+     int val;
+     cout<<"Enter data to search in tree \n";
+     cin>>val;
+     bool result = searchData(root,val);
+     cout<<"Result:"<<result<<"\n";
+
     return 0;
 }
 
