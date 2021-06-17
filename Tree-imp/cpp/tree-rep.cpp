@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 
 using namespace std;
 
@@ -78,7 +79,21 @@ int findMax(Node* root){
         return root->data;
     }
 
+   
+
     return findMax(root->right);
+}
+
+int findHeight(Node* root){
+
+    if(root == NULL){
+        return -1;
+    }
+    int leftHeight = findHeight(root->left);
+    int rightHeight = findHeight(root->right);
+    // cout<<"Left Height:"<<leftHeight<<"\n";
+    // cout<<"Right Height:"<<rightHeight<<"\n";
+    return max(leftHeight, rightHeight)+1;
 }
 
 int main(){
@@ -102,7 +117,7 @@ int main(){
      cout<<"Result:"<<result<<"\n";
      cout<<"Smallest Number in tree:-"<<findMin(root)<<"\n";
      cout<<"Largest Number in tree:- "<<findMax(root)<<"\n";
-
+     cout<<"Height of Tree:"<<findHeight(root)<<endl;
     return 0;
 }
 
