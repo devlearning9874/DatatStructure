@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<queue>
 #include<algorithm>
 
 using namespace std;
@@ -130,6 +131,29 @@ void postOrder(Node* root){
     cout<<root->data<<" ";
 }
 
+//Printing Level Order Traversal: 15 10 20 8 12 17 25
+
+void levelOrder(Node* root){
+    
+    if(root == NULL){
+        return;
+    }
+
+    queue<Node*> q;
+    q.push(root);
+     
+    while (!q.empty())
+    {   Node* current = q.front();
+        
+        cout<<current->data<<" ";
+        if(current->left != NULL) q.push(current->left);
+        if(current->right != NULL) q.push(current->right);
+        q.pop();
+    }
+    
+
+}
+
 int main(){
      
      Node* root = NULL;
@@ -161,6 +185,9 @@ int main(){
      cout<<"\n";
      cout<<"Post Order:";
      postOrder(root);
+     cout<<"\n";
+     cout<<"Level Order:";
+     levelOrder(root);
      cout<<"\n";
     return 0;
 }
