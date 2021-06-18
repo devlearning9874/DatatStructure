@@ -154,6 +154,57 @@ void levelOrder(Node* root){
 
 }
 
+bool isSubTreeLesser(Node* root, int value){
+
+    if(root == NULL){
+          return true;
+    }
+
+    if(root->data <= value
+       && isSubTreeLesser(root->left, value)
+       && isSubTreeLesser(root->right, value)){
+           return true;
+       }else{
+       return false;
+    }
+       
+}
+
+bool isSubTreeGreater(Node* root, int value){
+    if(root==NULL){
+        return true;
+    } 
+
+    if(root->data > value
+       && isSubTreeGreater(root->left, value)
+       && isSubTreeGreater(root->right, value)){
+            return true;
+       }else{
+         return false;
+    }
+       
+}
+
+bool isItBSTool(Node* root, int minValue, int maxValue){
+
+    if(root == NULL){
+        return true;
+    }
+    if(root->data > minValue && root->data < maxValue
+         && isItBSTool(root->left, minValue, root->data)
+         && isItBSTool(root->right, root->data, maxValue)
+       ){
+          return true;
+       } else{
+        return false;
+    }
+       
+}
+
+bool isItBST(Node* root){
+    return isItBSTool(root, INT_MIN, INT_MAX);
+}
+
 int main(){
      
      Node* root = NULL;
@@ -189,6 +240,9 @@ int main(){
      cout<<"Level Order:";
      levelOrder(root);
      cout<<"\n";
+     bool resB = isItBST(root);
+     string rest = resB ? "True":"False";
+     cout<<"Is it Binary Search Tree?"<<rest<<"\n";
     return 0;
 }
 
