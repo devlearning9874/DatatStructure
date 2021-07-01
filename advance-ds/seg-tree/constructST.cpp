@@ -6,6 +6,23 @@ using namespace std;
 int getMid(int s, int e) {
 	return s + (e - s)/2;
 } 
+void updateSTUtil(int *st, int ss, int se, int i, int diff, int si){
+
+    if( i>se || i < ss) return;
+
+    st[si] = st[si] + diff;
+    if(se != ss){
+        int mid = getMid(ss, se);
+        updateSTUtil(st, ss, mid, i, diff, 2*si+1);
+        updateSTUtil(st, mid+1, se, i, diff, 2*si+2);
+    }
+}
+void updateST(int arr[],int *st, int n, int i, int value){
+     
+     int diff = value - arr[i];
+     arr[i] = value;
+     updateSTUtil(st, 0, n-1, i, diff, 0);
+}
 
 int getSumUtil(int *st, int ss, int se, int qs, int qe, int si){
 
@@ -74,14 +91,15 @@ int main(){
 
     int *st = constructST(arr,n); //segTree constructed now use it
     //segement tree constucted using given array
-    
-   
-    
-    
-    
     //Now get query for sum of range
     cout<<"Sum of the given range:"<<getSum(st,n,1,4)<<endl;
    
+   //Upadating Segment Tree takes log(n) T.C
+   updateST(arr,st, n, 1, 10);
+
+   //Now after update range query sum will be
+
+   cout<<"After update Sum:"<<getSum(st,n, 1, 4)<<endl;
 
 
     return 0;
