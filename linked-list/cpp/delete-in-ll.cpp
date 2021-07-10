@@ -33,11 +33,54 @@ public:
     }
 
     void insertNodeTail(int data)
-    {
+    {      
+          Node *new_node = new Node();
+          if(head == NULL){
+              insertNodeFront(data);
+              return;
+          }
+
+          Node *tail = head;
+
+          while(tail->next != NULL){
+              tail = tail->next;
+          }
+          new_node->val = data;
+          new_node->next = NULL;
+          tail->next = new_node;
     }
 
-    void insertNodePos(int data)
+    void insertNodePos(int pos,int data)
     {
+          Node *newNode = new Node();
+          newNode->val = data;
+        if(head == NULL){
+            insertNodeFront(data);
+            return;
+        }
+        if(pos < 0){
+            cout<<"Invalid Position"<<endl;
+            return;
+        }
+        if(pos == 1){
+            insertNodeFront(data);
+            return;
+        }
+        pos = pos -2;
+        Node *temp = head;
+        while(pos > 0){
+            temp = temp->next;
+            pos--;
+        }
+
+        if(temp->next == NULL){
+            insertNodeTail(data);
+            return;
+        }
+
+        newNode->next = temp->next;
+        temp->next = newNode;
+
     }
 
     void deleteNodeFront()
@@ -154,6 +197,10 @@ int main()
     // ll.deleteNodeTail();
     // ll.print();
     ll.deleteNodePos(3);
+    ll.print();
+    ll.insertNodeTail(65);
+    ll.print();
+    ll.insertNodePos(3,13);
     ll.print();
 
     return 0;
