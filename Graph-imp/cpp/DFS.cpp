@@ -36,9 +36,9 @@ class DFS{
 
 int main(){
     int n,e;
-    cin>>n>>e;
+    cin>>n>>e;            // n = 5
 
-    vector<int> adj[n+1];
+    vector<int> adj[n+1];   
     
     for(int i=0; i<e; i++){
         int u,v;
@@ -55,5 +55,15 @@ int main(){
      for(auto it: resutlOfDfs){
          cout<<it<<" ";
      }
+     
+     return 0;
 
 }
+// input: n = 4, e = 6 
+// 0 -> 1,
+//  0 -> 2,
+//   1 -> 2,
+//    2 -> 0,
+//     2 -> 3,
+//      3 -> 3 
+// Output: DFS from vertex 1 : 1 2 0 3 
