@@ -18,3 +18,9 @@ insert(val) – Inserts a new element val in the Set.
 find(val) - Returns an iterator pointing to the element val in the set if it is present.
 <br />
 empty() – Returns whether the set is empty.
+
+## set vs unordered_set
+
+- Set is an ordered sequence of unique keys whereas unordered_set is a set in which key can be stored in any order, so unordered.
+- Set is implemented as a balanced tree      structure that is why it is possible to maintain order between the elements (by specific tree traversal). 
+- The time complexity of set operations is O(Log n) while for unordered_set, it is O(1).
