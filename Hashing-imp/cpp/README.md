@@ -7,10 +7,14 @@
 1. unordered_map
 
 ## Set
-- Some basic functions associated with Set:
+- Some basic functions associated with Set: <br />
 begin() – Returns an iterator to the first element in the set.
+<br />
 end() – Returns an iterator to the theoretical element that follows last element in the set.
+<br />
 size() – Returns the number of elements in the set.
 insert(val) – Inserts a new element val in the Set.
+<br />
 find(val) - Returns an iterator pointing to the element val in the set if it is present.
+<br />
 empty() – Returns whether the set is empty.
