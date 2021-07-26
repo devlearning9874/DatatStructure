@@ -7,9 +7,9 @@
 1. unordered_map
 
 ## Set
-- Some basic functions associated with Set: <br />
+- Some basic functions associated with Set: 
 begin() – Returns an iterator to the first element in the set.
-<br />
+
 end() – Returns an iterator to the theoretical element that follows last element in the set.
 <br />
 size() – Returns the number of elements in the set.
